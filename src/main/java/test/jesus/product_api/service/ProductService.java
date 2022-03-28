@@ -24,7 +24,8 @@ public class ProductService {
         if(similarProducts != null) {
             similarProducts.forEach(pid -> {
                 var product = repository.GetProductById(pid);
-                resultList.add(product);
+                if(product != null)
+                    resultList.add(product);
             });
         }
 
