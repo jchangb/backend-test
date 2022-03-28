@@ -18,11 +18,6 @@ public class ProductController {
     @Autowired
     private ProductService service;
 
-    @GetMapping("/{id}/detail")
-    public Product GetDetails(@PathVariable String id){
-        return service.GetProductDetails(id);
-    }
-
     @GetMapping("/{id}/similar")
     public List<Product> GetSimilarProducts(@PathVariable String id){
         return service.GetSimilarProducts(id);
