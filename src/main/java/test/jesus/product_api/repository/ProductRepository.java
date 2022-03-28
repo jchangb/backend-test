@@ -2,8 +2,10 @@ package test.jesus.product_api.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.HttpClientErrorException;
 import test.jesus.product_api.config.ProductAPIConfig;
 import test.jesus.product_api.model.Product;
 
@@ -32,14 +34,17 @@ public class ProductRepository {
         this.config = config;
     }
     
+    @Cacheable(value = "products", unless = "#result == null")
     public Product GetProductById(String id){
+        System.out.println("retrieving product");
         var uri = config.getEndpoint_product().replace("{id}", id);
         var response = apiClient.get(Product.class, uri);
 
         return response.body;
     }
-
+    
     public List<String> GetSimilarProductsByProductId(String id){
+        System.out.println("retrieving similar ids");
         var uri = config.getEndpoint_productSimilarIds().replace("{id}", id);
         var response = apiClient.get(List.class, uri);
 
