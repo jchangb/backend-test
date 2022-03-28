@@ -32,8 +32,8 @@ product-api:
 ### Dev notes
 - The repository was setup late in development, so its history does not reflect development very well
 - At the start, I had a slightly more complex exception handling setup. However, seeing how the API functionally benefits the most by displaying whatever products it found instead of an error, I decided against the previous setup
-- ApiResponse model used to contain more information about the Api Call. This designed seemed uncompatible with spring-boot's webClient approach, which is why the ApiResponse seems off by having a single property: its body
+- ApiResponse model used to contain more information about the Api Call. This designed seemed incompatible  with spring-boot's webClient approach, which is why the ApiResponse seems off by having a single property: its body
 
 ### In retrospective
 While the application does provide a working solution for the requested use-case, I wish it provided a better result overall. I realize there is plenty of room for improvement.
-Nevertheless it worked very well as a learning and discovery excercise.
+Nevertheless it worked very well as a learning and discovery exercise.
