@@ -18,9 +18,9 @@ public class ProductRepository {
 
     private ApiClient apiClient;
 
-    @Value("${product-api-config.url}")
+    @Value("${product-api.url}")
     private String productApiUrl;
-    @Value("${product-api-config.request_timeout_in_seconds}")
+    @Value("${product-api.request_timeout_in_seconds}")
     private int requestTimeoutInSeconds;
 
     @Autowired
