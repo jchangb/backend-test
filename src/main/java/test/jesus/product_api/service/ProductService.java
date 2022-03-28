@@ -14,9 +14,6 @@ public class ProductService {
     @Autowired
     ProductRepository repository;
 
-    public Product GetProductDetails(String id){
-        return repository.GetProductById(id);
-    }
 
     public List<Product> GetSimilarProducts(String id){
         List<Product> resultList = new ArrayList<>();
