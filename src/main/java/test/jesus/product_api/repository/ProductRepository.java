@@ -36,20 +36,16 @@ public class ProductRepository {
         var uri = config.getEndpoint_product().replace("{id}", id);
         var response = apiClient.get(Product.class, uri);
 
-        if(response.status == HttpStatus.OK)
-            return response.body;
-        else
-            return null;
+        return response.body;
     }
 
     public List<String> GetSimilarProductsByProductId(String id){
         var uri = config.getEndpoint_productSimilarIds().replace("{id}", id);
         var response = apiClient.get(List.class, uri);
 
-        if(response.status == HttpStatus.OK){
-            var strList = new ArrayList<String>();
+        var strList = new ArrayList<String>();
+        if(response.body != null)
             for(Object i : response.body) strList.add(Integer.toString((int)i));
-            return strList;
-        } else return null;
+        return strList;
     }
 }
